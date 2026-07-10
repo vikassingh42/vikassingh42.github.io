@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vikas Kumar Singh — Finance, Strategy & Operations</title>
+<meta name="description" content="Vikas Kumar Singh — MBA Candidate, Financial Consultancy & Operations. Portfolio of finance modeling, strategy, and analytics work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#0F172A;
+    --secondary:#1E293B;
+    --accent:#10B981;
+    --highlight:#F59E0B;
+    --bg:#FFFFFF;
+    --section-bg:#F8FAFC;
+    --text:#0F172A;
+    --text-muted:#475569;
+    --border:#E2E8F0;
+    --card-bg:#FFFFFF;
+  }
+  html.dark{
+    --bg:#0B1220;
+    --section-bg:#0F172A;
+    --text:#F1F5F9;
+    --text-muted:#94A3B8;
+    --border:#1E293B;
+    --card-bg:#111C31;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    transition:background .35s ease, color .35s ease;
+    overflow-x:hidden;
+  }
+  ::selection{ background:var(--accent); color:#fff; }
+  h1,h2,h3,h4{ font-family:'Newsreader','Inter',serif; margin:0; letter-spacing:-0.02em; }
+  .mono{ font-family:'JetBrains Mono',monospace; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 28px; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease, background .3s ease;
+  }
+  header.nav.scrolled{ border-bottom-color:var(--border); }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; height:76px; }
+  .brand{ font-family:'Newsreader',serif; font-weight:600; font-size:1.15rem; display:flex; align-items:baseline; gap:6px; }
+  .brand .dot{ color:var(--accent); }
+  nav ul{ list-style:none; display:flex; gap:30px; margin:0; padding:0; }
+  nav ul li a{
+    font-size:.86rem; font-weight:500; color:var(--text-muted);
+    position:relative; padding:4px 0; transition:color .2s ease;
+  }
+  nav ul li a::after{
+    content:''; position:absolute; left:0; bottom:-3px; width:0; height:1.5px; background:var(--accent);
+    transition:width .25s ease;
+  }
+  nav ul li a:hover{ color:var(--text); }
+  nav ul li a:hover::after{ width:100%; }
+  .nav-actions{ display:flex; align-items:center; gap:14px; }
+  .icon-btn{
+    width:36px; height:36px; border-radius:50%; border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; background:none;
+    color:var(--text); transition:border-color .2s, background .2s;
+  }
+  .icon-btn:hover{ border-color:var(--accent); }
+  .btn-nav-resume{
+    font-size:.82rem; font-weight:600; padding:9px 18px; border-radius:999px;
+    background:var(--primary); color:#fff; white-space:nowrap;
+    transition:transform .2s ease, background .2s ease;
+  }
+  html.dark .btn-nav-resume{ background:var(--accent); color:#0B1220; }
+  .btn-nav-resume:hover{ transform:translateY(-1px); }
+  .menu-toggle{ display:none; background:none; border:none; color:var(--text); cursor:pointer; }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:190px 0 110px; position:relative; overflow:hidden; }
+  .hero-grid{ display:grid; grid-template-columns:1.15fr 0.85fr; gap:64px; align-items:center; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px; font-size:.78rem; font-weight:600;
+    letter-spacing:.06em; text-transform:uppercase; color:var(--accent); margin-bottom:22px;
+  }
+  .eyebrow .line{ width:26px; height:1.5px; background:var(--accent); display:inline-block; }
+  .hero h1{ font-size:clamp(2.6rem,5vw,4.1rem); font-weight:600; line-height:1.04; color:var(--text); }
+  .hero h1 em{ font-style:italic; color:var(--accent); }
+  .hero-role{ font-family:'Inter',sans-serif; font-weight:600; font-size:1.15rem; color:var(--text-muted); margin-top:20px; }
+  .typing-row{ margin-top:6px; font-size:1.15rem; font-weight:600; height:1.6em; }
+  .typing-row .type-target{ color:var(--highlight); }
+  .cursor{ display:inline-block; width:2px; background:var(--highlight); margin-left:2px; animation:blink 1s steps(1) infinite; }
+  @keyframes blink{ 50%{ opacity:0; } }
+  .hero-desc{ margin-top:26px; font-size:1.02rem; line-height:1.75; color:var(--text-muted); max-width:56ch; }
+  .hero-ctas{ display:flex; gap:14px; margin-top:38px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:14px 26px; border-radius:10px;
+    font-size:.88rem; font-weight:600; cursor:pointer; transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    border:1px solid transparent;
+  }
+  .btn-primary{ background:var(--primary); color:#fff; }
+  html.dark .btn-primary{ background:var(--accent); color:#0B1220; }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 12px 24px -10px rgba(15,23,42,.4); }
+  .btn-outline{ border-color:var(--border); color:var(--text); background:transparent; }
+  .btn-outline:hover{ border-color:var(--accent); color:var(--accent); }
+  .hero-socials{ display:flex; gap:22px; margin-top:44px; }
+  .hero-socials a{ font-size:.82rem; font-weight:600; color:var(--text-muted); display:flex; align-items:center; gap:7px; border-bottom:1px solid transparent; padding-bottom:2px; transition:.2s; }
+  .hero-socials a:hover{ color:var(--accent); border-color:var(--accent); }
+
+  .hero-photo-wrap{ position:relative; }
+  .hero-photo-card{
+    position:relative; border-radius:20px; overflow:hidden; aspect-ratio:4/5;
+    box-shadow:0 30px 60px -20px rgba(15,23,42,.35);
+    border:1px solid var(--border);
+  }
+  .hero-photo-card img{ width:100%; height:100%; object-fit:cover; }
+  .hero-badge{
+    position:absolute; bottom:-22px; left:-22px; background:var(--card-bg); border:1px solid var(--border);
+    border-radius:14px; padding:16px 20px; box-shadow:0 20px 40px -15px rgba(15,23,42,.25);
+    display:flex; align-items:center; gap:12px; max-width:230px;
+  }
+  .hero-badge .num{ font-family:'Newsreader',serif; font-size:1.6rem; font-weight:600; color:var(--accent); }
+  .hero-badge .lbl{ font-size:.72rem; color:var(--text-muted); line-height:1.3; }
+  .molecule-line{ position:absolute; top:-30px; right:-30px; opacity:.5; width:130px; }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:120px 0; position:relative; }
+  .section-alt{ background:var(--section-bg); }
+  .section-head{ margin-bottom:64px; max-width:640px; }
+  .section-head .eyebrow{ margin-bottom:16px; }
+  .section-head h2{ font-size:clamp(1.9rem,3.4vw,2.6rem); font-weight:600; }
+  .section-head p{ margin-top:16px; color:var(--text-muted); font-size:1rem; line-height:1.7; }
+
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px; align-items:start; }
+  .about-copy p{ font-size:1.02rem; line-height:1.85; color:var(--text-muted); margin:0 0 20px; }
+  .about-copy strong{ color:var(--text); font-weight:600; }
+  .about-stats{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:6px; }
+  .stat-card{ border:1px solid var(--border); border-radius:14px; padding:22px 20px; background:var(--card-bg); }
+  .stat-card .num{ font-family:'Newsreader',serif; font-size:2.1rem; font-weight:600; color:var(--primary); }
+  html.dark .stat-card .num{ color:var(--accent); }
+  .stat-card .lbl{ font-size:.78rem; color:var(--text-muted); margin-top:6px; line-height:1.4; }
+  .journey-strip{
+    margin-top:40px; border:1px solid var(--border); border-radius:16px; padding:26px 26px;
+    background:var(--card-bg); display:flex; align-items:center; gap:18px;
+  }
+  .journey-strip svg{ flex-shrink:0; }
+  .journey-strip .txt{ font-size:.86rem; color:var(--text-muted); line-height:1.6; }
+  .journey-strip .txt b{ color:var(--text); }
+
+  /* ---------- TIMELINE (Education + Experience) ---------- */
+  .timeline{ position:relative; padding-left:34px; }
+  .timeline::before{ content:''; position:absolute; left:6px; top:6px; bottom:6px; width:1.5px; background:var(--border); }
+  .t-item{ position:relative; padding-bottom:52px; }
+  .t-item:last-child{ padding-bottom:0; }
+  .t-item::before{
+    content:''; position:absolute; left:-34px; top:4px; width:13px; height:13px; border-radius:50%;
+    background:var(--bg); border:2.5px solid var(--accent);
+  }
+  .t-date{ font-size:.76rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+  .t-title{ font-size:1.2rem; font-weight:600; font-family:'Newsreader',serif; }
+  .t-sub{ font-size:.88rem; color:var(--text-muted); margin-top:3px; font-weight:500; }
+  .t-body{ margin-top:12px; font-size:.92rem; color:var(--text-muted); line-height:1.75; }
+  .t-body ul{ margin:0; padding-left:18px; }
+  .t-body li{ margin-bottom:6px; }
+  .t-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+  .tag{ font-size:.72rem; font-weight:600; padding:5px 12px; border-radius:999px; background:var(--section-bg); border:1px solid var(--border); color:var(--text-muted); }
+  html.dark .tag{ background:#0B1220; }
+  .badge-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
+  .badge-pill{ font-size:.72rem; font-weight:700; padding:6px 13px; border-radius:999px; background:rgba(245,158,11,.12); color:var(--highlight); border:1px solid rgba(245,158,11,.3); }
+
+  /* ---------- PROJECTS ---------- */
+  .toggle-row{ display:flex; gap:10px; margin-bottom:50px; }
+  .toggle-btn{
+    font-size:.82rem; font-weight:600; padding:10px 20px; border-radius:999px; border:1px solid var(--border);
+    background:transparent; color:var(--text-muted); cursor:pointer; transition:.2s;
+  }
+  .toggle-btn.active{ background:var(--primary); color:#fff; border-color:var(--primary); }
+  html.dark .toggle-btn.active{ background:var(--accent); color:#0B1220; border-color:var(--accent); }
+
+  .case-study{
+    border:1px solid var(--border); border-radius:22px; background:var(--card-bg); margin-bottom:34px;
+    padding:44px; display:grid; grid-template-columns:0.85fr 1.15fr; gap:44px; transition:box-shadow .3s ease, transform .3s ease;
+  }
+  .case-study:hover{ box-shadow:0 26px 50px -25px rgba(15,23,42,.28); transform:translateY(-3px); }
+  .cs-left{ display:flex; flex-direction:column; }
+  .cs-index{ font-family:'JetBrains Mono',monospace; font-size:.78rem; color:var(--accent); font-weight:600; }
+  .cs-title{ font-size:1.5rem; font-weight:600; font-family:'Newsreader',serif; margin-top:10px; line-height:1.25; }
+  .cs-duration{ font-size:.8rem; color:var(--text-muted); margin-top:8px; font-weight:500; }
+  .cs-metrics{ display:flex; gap:22px; margin-top:26px; flex-wrap:wrap; }
+  .cs-metric .val{ font-family:'Newsreader',serif; font-size:1.5rem; font-weight:600; color:var(--primary); }
+  html.dark .cs-metric .val{ color:var(--accent); }
+  .cs-metric .lbl{ font-size:.7rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.03em; margin-top:3px; }
+  .cs-tools{ display:flex; flex-wrap:wrap; gap:8px; margin-top:auto; padding-top:26px; }
+
+  .cs-right{ display:grid; grid-template-columns:1fr 1fr; gap:26px 30px; }
+  .cs-block h4{ font-size:.72rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+  .cs-block p, .cs-block li{ font-size:.87rem; color:var(--text-muted); line-height:1.65; }
+  .cs-block ul{ margin:0; padding-left:16px; }
+  .cs-block.full{ grid-column:1/-1; }
+
+  /* simple project cards for "other projects" */
+  .proj-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:26px; }
+  .proj-card{ border:1px solid var(--border); border-radius:18px; padding:32px; background:var(--card-bg); transition:.25s; }
+  .proj-card:hover{ transform:translateY(-4px); box-shadow:0 22px 44px -24px rgba(15,23,42,.3); }
+  .proj-card .cat{ font-size:.72rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.05em; }
+  .proj-card h3{ font-size:1.2rem; font-weight:600; margin-top:10px; font-family:'Newsreader',serif; }
+  .proj-card .dur{ font-size:.78rem; color:var(--text-muted); margin-top:6px; }
+  .proj-card p{ font-size:.87rem; color:var(--text-muted); line-height:1.7; margin-top:14px; }
+  .proj-card .t-tags{ margin-top:16px; }
+
+  /* ---------- RESEARCH ---------- */
+  .research-card{
+    border:1px solid var(--border); border-radius:20px; padding:38px; background:var(--card-bg); margin-bottom:26px;
+    display:grid; grid-template-columns:0.7fr 1.3fr; gap:36px;
+  }
+  .research-card h3{ font-size:1.25rem; font-weight:600; font-family:'Newsreader',serif; line-height:1.3; }
+  .research-card .inst{ font-size:.82rem; color:var(--accent); font-weight:600; margin-top:8px; }
+  .research-card .dur{ font-size:.78rem; color:var(--text-muted); margin-top:6px; }
+  .research-grid-inner{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  .research-grid-inner h5{ font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--text-muted); margin-bottom:6px; }
+  .research-grid-inner p{ font-size:.86rem; color:var(--text-muted); line-height:1.65; margin:0; }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:30px; }
+  .skill-cat{ border:1px solid var(--border); border-radius:18px; padding:30px; background:var(--card-bg); }
+  .skill-cat h4{ font-size:.98rem; font-weight:700; margin-bottom:18px; display:flex; align-items:center; gap:10px; }
+  .skill-cat h4::before{ content:''; width:8px; height:8px; border-radius:2px; background:var(--accent); display:inline-block; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:10px; }
+  .chip{
+    font-size:.8rem; font-weight:500; padding:8px 15px; border-radius:10px; background:var(--section-bg);
+    border:1px solid var(--border); color:var(--text); transition:.2s;
+  }
+  html.dark .chip{ background:#0B1220; }
+  .chip:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
+
+  /* ---------- CERTIFICATIONS ---------- */
+  .cert-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .cert-card{ border:1px solid var(--border); border-radius:16px; padding:26px; background:var(--card-bg); transition:.25s; }
+  .cert-card:hover{ border-color:var(--accent); transform:translateY(-3px); }
+  .cert-icon{ width:42px; height:42px; border-radius:10px; background:rgba(16,185,129,.12); display:flex; align-items:center; justify-content:center; color:var(--accent); margin-bottom:16px; }
+  .cert-card h4{ font-size:.95rem; font-weight:600; line-height:1.4; font-family:'Inter',sans-serif; }
+  .cert-card .org{ font-size:.8rem; color:var(--accent); font-weight:600; margin-top:8px; }
+  .cert-card .date{ font-size:.76rem; color:var(--text-muted); margin-top:4px; }
+  .cert-card .link{ display:inline-flex; align-items:center; gap:5px; font-size:.78rem; font-weight:600; margin-top:14px; color:var(--text); border-bottom:1px solid var(--border); }
+  .cert-card .link:hover{ color:var(--accent); border-color:var(--accent); }
+
+  /* ---------- ACHIEVEMENTS ---------- */
+  .ach-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .ach-card{ border:1px solid var(--border); border-radius:16px; padding:28px; background:var(--card-bg); position:relative; overflow:hidden; }
+  .ach-card::before{ content:''; position:absolute; top:0; left:0; width:4px; height:100%; background:var(--highlight); }
+  .ach-card .ico{ color:var(--highlight); margin-bottom:14px; }
+  .ach-card p{ font-size:.9rem; color:var(--text); line-height:1.6; font-weight:500; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+  .contact-card{ border:1px solid var(--border); border-radius:24px; padding:52px; background:var(--card-bg); }
+  .contact-row{ display:flex; align-items:center; gap:16px; padding:16px 0; border-bottom:1px solid var(--border); }
+  .contact-row:last-child{ border-bottom:none; }
+  .contact-row .ic{ width:38px; height:38px; border-radius:10px; background:var(--section-bg); display:flex; align-items:center; justify-content:center; color:var(--accent); flex-shrink:0; }
+  .contact-row .lbl{ font-size:.72rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.05em; }
+  .contact-row .val{ font-size:.94rem; font-weight:600; margin-top:2px; }
+  .contact-photo{ border-radius:22px; overflow:hidden; aspect-ratio:1/1; border:1px solid var(--border); }
+  .contact-photo img{ width:100%; height:100%; object-fit:cover; }
+
+  footer{ padding:44px 0; border-top:1px solid var(--border); }
+  .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .footer-inner p{ font-size:.8rem; color:var(--text-muted); margin:0; }
+  .footer-links{ display:flex; gap:22px; }
+  .footer-links a{ font-size:.8rem; color:var(--text-muted); transition:.2s; }
+  .footer-links a:hover{ color:var(--accent); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    nav ul{ display:none; }
+    .menu-toggle{ display:flex; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero{ padding-top:150px; }
+    .hero-photo-wrap{ max-width:340px; margin:0 auto; order:-1; }
+    .about-grid{ grid-template-columns:1fr; }
+    .case-study{ grid-template-columns:1fr; padding:30px; }
+    .cs-right{ grid-template-columns:1fr; }
+    .proj-grid{ grid-template-columns:1fr; }
+    .research-card{ grid-template-columns:1fr; }
+    .research-grid-inner{ grid-template-columns:1fr; }
+    .skills-grid{ grid-template-columns:1fr; }
+    .cert-grid{ grid-template-columns:repeat(2,1fr); }
+    .ach-grid{ grid-template-columns:1fr; }
+    .contact-wrap{ grid-template-columns:1fr; }
+    .contact-photo{ max-width:260px; margin:0 auto; }
+    section{ padding:80px 0; }
+  }
+  @media (max-width:560px){
+    .cert-grid{ grid-template-columns:1fr; }
+    .about-stats{ grid-template-columns:1fr; }
+    .hero-ctas{ flex-direction:column; align-items:stretch; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="siteNav">
+  <div class="wrap nav-inner">
+    <a href="#home" class="brand">Vikas<span class="dot">.</span>Singh</a>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">
+        <svg id="iconSun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8l1.8-1.8M18 6l1.8-1.8"/></svg>
+        <svg id="iconMoon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <a href="assets/Vikas_Singh_Resume.pdf" download class="btn-nav-resume">Resume</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav id="mobileNav" style="display:none; border-top:1px solid var(--border);">
+    <ul style="flex-direction:column; padding:18px 28px; gap:16px;">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div class="reveal in">
+      <div class="eyebrow"><span class="line"></span> MBA Candidate · Financial Consultancy &amp; Operations</div>
+      <h1>Vikas Kumar Singh —<br>from <em>Molecule</em> to Management.</h1>
+      <div class="hero-role">Finance · Strategy · Operations · Analytics</div>
+      <div class="typing-row mono">
+        <span class="type-target" id="typeTarget"></span><span class="cursor" id="typeCursor"></span>
+      </div>
+      <p class="hero-desc">MBA candidate at the Mittal School of Business, Lovely Professional University, building financial models and business cases that turn data into decisions — grounded in a science background that taught precision before it taught profit.</p>
+      <div class="hero-ctas">
+        <a href="assets/Vikas_Singh_Resume.pdf" download class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v13m0 0-4-4m4 4 4-4M4 21h16"/></svg>
+          Download Resume
+        </a>
+        <a href="#projects" class="btn btn-outline">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Contact</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://www.linkedin.com/in/vikassinghofficial42/" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.83v2.05h.05c.53-1 1.85-2.05 3.8-2.05 4.07 0 4.82 2.68 4.82 6.16V23h-4v-6.86c0-1.64-.03-3.75-2.29-3.75-2.29 0-2.64 1.79-2.64 3.63V23h-4V8z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://linktr.ee/vikassinghofficial" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          Linktree
+        </a>
+        <a href="mailto:vikassinghofficial42@gmail.com">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+          Email
+        </a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap reveal in">
+      <svg class="molecule-line" viewBox="0 0 140 140" fill="none" stroke="var(--accent)" stroke-width="1.4">
+        <circle cx="20" cy="20" r="6"/><circle cx="55" cy="12" r="4"/><circle cx="15" cy="55" r="4"/>
+        <line x1="20" y1="20" x2="55" y2="12"/><line x1="20" y1="20" x2="15" y2="55"/>
+      </svg>
+      <div class="hero-photo-card">
+        <img src="assets/vikas-photo.jpg" alt="Vikas Kumar Singh">
+      </div>
+      <div class="hero-badge">
+        <div class="num">9.39</div>
+        <div class="lbl">MBA CGPA · Mittal School of Business, LPU</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="section-alt" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="eyebrow"><span class="line"></span> About</div>
+        <h2 style="font-size:clamp(1.9rem,3.4vw,2.6rem); font-weight:600; line-height:1.2;">An analytical mind trained in science, now applied to business.</h2>
+        <div class="journey-strip" style="margin-top:32px;">
+          <svg width="46" height="46" viewBox="0 0 46 46" fill="none" stroke="var(--accent)" stroke-width="1.6">
+            <circle cx="10" cy="10" r="4"/><circle cx="22" cy="6" r="2.5"/><circle cx="6" cy="24" r="2.5"/>
+            <line x1="10" y1="10" x2="22" y2="6"/><line x1="10" y1="10" x2="6" y2="24"/>
+            <path d="M16 30 L22 22 L28 32 L34 18 L40 26" stroke="var(--highlight)"/>
+          </svg>
+          <div class="txt">Every model I build still follows the same instinct pharmacy taught me first: <b>test the hypothesis, trust the data, then act.</b></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="about-copy">
+          <p>Vikas began his academic life in a laboratory, not a boardroom — earning a Bachelor of Pharmacy from the Noida Institute of Engineering &amp; Technology with <strong>First Division with Distinction</strong>, under a fully government-funded scholarship. It was a discipline built on evidence: a hypothesis means nothing until it survives scrutiny. That habit of mind — question first, decide second — is what carried him into business.</p>
+          <p>Across internships spanning pharmaceutical manufacturing, hospital operations, and most recently <strong>corporate finance at Hindalco (Aditya Birla Group)</strong>, he found the common thread he was looking for: every function, whatever the industry, runs on the same underlying logic of process, compliance, and financial trade-off. That realization is what pulled him toward an <strong>MBA in Financial Consultancy &amp; Operations</strong> at the Mittal School of Business, LPU, where he now builds project finance and LBO models, dissects unit economics, and studies how capital decisions actually get made.</p>
+          <p>He is drawn to the parts of finance that resemble diagnosis more than arithmetic — reading a balance sheet the way he once read a lab result, looking for what the numbers are quietly telling you. That instinct now shows up in his project finance models, his research on financial literacy, and his growing interest in strategy and operations consulting, where analytical precision has to translate into a decision someone is willing to bet on.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card"><div class="num" data-count="9.39">0</div><div class="lbl">MBA CGPA at LPU's Mittal School of Business</div></div>
+          <div class="stat-card"><div class="num" data-count="4">0</div><div class="lbl">Finance models built — project finance, LBO, target costing &amp; more</div></div>
+          <div class="stat-card"><div class="num" data-count="10">0</div><div class="lbl">Professional certifications across finance, analytics &amp; operations</div></div>
+          <div class="stat-card"><div class="num" data-count="3">0</div><div class="lbl">Internships spanning finance, manufacturing &amp; hospital operations</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section id="education">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="line"></span> Education</div>
+      <h2>Academic foundation</h2>
+      <p>A record built on consistency — from district-topping school results to a scholarship-funded degree and a 9.39 CGPA in an MBA program built for finance professionals.</p>
+    </div>
+    <div class="timeline">
+      <div class="t-item reveal">
+        <div class="t-date">Aug 2025 — May 2027</div>
+        <div class="t-title">Master of Business Administration</div>
+        <div class="t-sub">Mittal School of Business, Lovely Professional University · Phagwara, Punjab</div>
+        <div class="t-body">Specializing in Financial Consultancy &amp; Operations. Coursework and live projects in financial modeling, valuation, project finance, and business strategy.</div>
+        <div class="badge-row"><span class="badge-pill">9.39 CGPA</span></div>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-date">Jul 2021 — Apr 2025</div>
+        <div class="t-title">Bachelor of Pharmacy</div>
+        <div class="t-sub">Noida Institute of Engineering &amp; Technology · Greater Noida, Uttar Pradesh</div>
+        <div class="t-body">Graduated with 85.1% — a scientific foundation in research methodology, regulatory compliance, and evidence-based decision-making.</div>
+        <div class="badge-row">
+          <span class="badge-pill">First Division with Distinction</span>
+          <span class="badge-pill">100% Government-Funded Scholarship</span>
+        </div>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-date">2017 — 2020</div>
+        <div class="t-title">Intermediate &amp; High School</div>
+        <div class="t-sub">D. C. Lewis Memorial School (CISCE) · Renukoot, Uttar Pradesh</div>
+        <div class="t-body">Intermediate: 91% · High School: 88.9%.</div>
+        <div class="badge-row">
+          <span class="badge-pill">ISC District Topper</span>
+          <span class="badge-pill">Rank 50 · UP-CET</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section class="section-alt" id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="line"></span> Experience</div>
+      <h2>Where the business exposure comes from</h2>
+      <p>Three internships across finance, manufacturing, and hospital operations — each one building a different piece of business fluency: reporting, compliance, and process discipline.</p>
+    </div>
+    <div class="timeline">
+      <div class="t-item reveal">
+        <div class="t-date">Jun 2026 — Aug 2026</div>
+        <div class="t-title">Finance &amp; Accounts Intern</div>
+        <div class="t-sub">Hindalco, Aditya Birla Industries · Renukoot, Uttar Pradesh</div>
+        <div class="t-body">
+          <ul>
+            <li>Supported income tax computation and payroll operations — evaluating deductions, exemptions, and salary declarations — contributing to TDS processing and the issuance of 200+ monthly payslips.</li>
+            <li>Managed PF documentation and clearance activity for 50+ employees, ensuring timely case resolution and compliance with internal procedure.</li>
+            <li>Built quarterly departmental performance reports, presentations, and dashboards to support management review and decision-making.</li>
+          </ul>
+        </div>
+        <div class="t-tags"><span class="tag">Payroll &amp; TDS</span><span class="tag">Financial Reporting</span><span class="tag">MS Excel</span><span class="tag">Management Reporting</span></div>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-date">Feb 2024 — Mar 2024</div>
+        <div class="t-title">Production &amp; QC Intern</div>
+        <div class="t-sub">Ajanta Pharma Ltd. · Guwahati, Assam</div>
+        <div class="t-body">
+          <ul>
+            <li>Observed Good Manufacturing Practice (GMP) implementation across production operations, supporting the QA team on compliance monitoring and documentation standards — the same rigor now applied to financial controls.</li>
+          </ul>
+        </div>
+        <div class="t-tags"><span class="tag">Quality Assurance</span><span class="tag">Process Compliance</span><span class="tag">Documentation Standards</span></div>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-date">Aug 2023</div>
+        <div class="t-title">Operations Intern</div>
+        <div class="t-sub">Aditya Birla Hospitals · Renukoot, Uttar Pradesh</div>
+        <div class="t-body">
+          <ul>
+            <li>Managed inventory and distribution of pharmaceutical stock, maintaining record accuracy and timely supply — an early lesson in operational control and stakeholder communication.</li>
+          </ul>
+        </div>
+        <div class="t-tags"><span class="tag">Inventory Control</span><span class="tag">Stakeholder Communication</span><span class="tag">Problem Solving</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="line"></span> Featured Projects</div>
+      <h2>Finance &amp; strategy case studies</h2>
+      <p>Four independent modeling engagements — each structured like a consulting case, from business problem through to quantified impact.</p>
+    </div>
+
+    <!-- CASE STUDY 1 -->
+    <div class="case-study reveal">
+      <div class="cs-left">
+        <div class="cs-index">CASE 01 / PROJECT FINANCE</div>
+        <div class="cs-title">Project Finance Model — Charge Fast EV Charging Network</div>
+        <div class="cs-duration">Apr 2026 — May 2026 · Lovely Professional University</div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><div class="val">38.0%</div><div class="lbl">Equity IRR</div></div>
+          <div class="cs-metric"><div class="val">14.4%</div><div class="lbl">Project IRR</div></div>
+          <div class="cs-metric"><div class="val">₹14,100L</div><div class="lbl">Project NPV</div></div>
+        </div>
+        <div class="cs-tools t-tags">
+          <span class="tag">Excel</span><span class="tag">Project Finance</span><span class="tag">NPV / IRR</span><span class="tag">Scenario Analysis</span>
+        </div>
+      </div>
+      <div class="cs-right">
+        <div class="cs-block"><h4>Business Problem</h4><p>Evaluate whether a 1,000-unit EV charging network deployed across six Indian metro cities could be financed and operated as a viable independent project.</p></div>
+        <div class="cs-block"><h4>Approach</h4><p>Built a 10-year project finance model incorporating capex phasing, debt structuring, and operating-cost assumptions across each metro market.</p></div>
+        <div class="cs-block"><h4>Methodology</h4><p>Cash flow forecasting, debt capacity analysis, and return-on-investment assessment under a defined capital structure and financing scenario.</p></div>
+        <div class="cs-block"><h4>Key Contributions</h4><ul><li>Built the full capex and financing schedule from scratch</li><li>Modeled debt sizing against projected cash flow coverage</li></ul></div>
+        <div class="cs-block full"><h4>Business Impact &amp; Results</h4><p>The model demonstrated strong investment viability — a 38.0% Equity IRR and 14.4% Project IRR, with positive project and equity NPVs of ₹14,100L and ₹3,665L respectively — supporting the case for the network's bankability.</p></div>
+        <div class="cs-block full"><h4>Learning Outcome</h4><p>Deepened fluency in structuring infrastructure-style financing — balancing debt capacity against long-horizon operating risk in an emerging asset class.</p></div>
+      </div>
+    </div>
+
+    <!-- CASE STUDY 2 -->
+    <div class="case-study reveal">
+      <div class="cs-left">
+        <div class="cs-index">CASE 02 / M&amp;A / LBO</div>
+        <div class="cs-title">Leveraged Buyout Model — Dr. Agarwal's Health Care Ltd.</div>
+        <div class="cs-duration">Jan 2026 — Mar 2026 · Lovely Professional University</div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><div class="val">43.6%</div><div class="lbl">IRR</div></div>
+          <div class="cs-metric"><div class="val">6.1x</div><div class="lbl">MOIC</div></div>
+          <div class="cs-metric"><div class="val">10.0x</div><div class="lbl">Exit EBITDA Multiple</div></div>
+        </div>
+        <div class="cs-tools t-tags">
+          <span class="tag">LBO Modeling</span><span class="tag">Valuation</span><span class="tag">Debt Scheduling</span><span class="tag">Sensitivity Analysis</span>
+        </div>
+      </div>
+      <div class="cs-right">
+        <div class="cs-block"><h4>Business Problem</h4><p>Assess the acquisition feasibility of Dr. Agarwal's Health Care Ltd. under a leveraged buyout structure, and determine the return profile for a financial sponsor.</p></div>
+        <div class="cs-block"><h4>Approach</h4><p>Constructed a five-year LBO model layering operating projections onto a defined capital structure and debt financing scenario.</p></div>
+        <div class="cs-block"><h4>Methodology</h4><p>Modeled cash flows, a full debt repayment schedule, and exit valuation under a 10.0x exit EBITDA multiple assumption.</p></div>
+        <div class="cs-block"><h4>Key Contributions</h4><ul><li>Built debt paydown mechanics and covenant-style tracking</li><li>Ran capital structure and transaction sensitivity scenarios</li></ul></div>
+        <div class="cs-block full"><h4>Business Impact &amp; Results</h4><p>Projected a 43.6% IRR and 6.1x MOIC for the sponsor — a return profile strong enough to justify the transaction thesis under the modeled assumptions.</p></div>
+        <div class="cs-block full"><h4>Learning Outcome</h4><p>Built practical fluency in how leverage amplifies (and risks) equity returns, and how sensitive deal outcomes are to exit multiple assumptions.</p></div>
+      </div>
+    </div>
+
+    <!-- CASE STUDY 3 -->
+    <div class="case-study reveal">
+      <div class="cs-left">
+        <div class="cs-index">CASE 03 / PRICING &amp; COSTING</div>
+        <div class="cs-title">Target Costing &amp; Profitability Assessment — "Fold &amp; Go"</div>
+        <div class="cs-duration">Oct 2025 — Dec 2025 · Lovely Professional University</div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><div class="val">₹300</div><div class="lbl">Optimal Selling Price</div></div>
+          <div class="cs-metric"><div class="val">16.7%</div><div class="lbl">Target Margin</div></div>
+          <div class="cs-metric"><div class="val">₹6.77</div><div class="lbl">Unit Cost Variance</div></div>
+        </div>
+        <div class="cs-tools t-tags">
+          <span class="tag">Target Costing</span><span class="tag">Pricing Strategy</span><span class="tag">Cost Modeling</span>
+        </div>
+      </div>
+      <div class="cs-right">
+        <div class="cs-block"><h4>Business Problem</h4><p>Determine a defensible selling price and target cost for a proposed consumer product, "Fold &amp; Go," to sustain a healthy margin against competitors.</p></div>
+        <div class="cs-block"><h4>Approach</h4><p>Ran competitor benchmarking and demand-based pricing analysis to anchor the price point, then reverse-engineered a target cost structure.</p></div>
+        <div class="cs-block"><h4>Methodology</h4><p>Built a cost model covering direct costs, overheads, and distribution expense to compare actual versus target cost.</p></div>
+        <div class="cs-block"><h4>Key Contributions</h4><ul><li>Identified an unfavourable ₹6.77 per-unit cost variance</li><li>Recommended sourcing and logistics levers to close the gap</li></ul></div>
+        <div class="cs-block full"><h4>Business Impact &amp; Results</h4><p>Set a ₹300 selling price against a ₹250 target cost, with sourcing and logistics recommendations designed to sustain a 16.7% target margin despite the identified variance.</p></div>
+        <div class="cs-block full"><h4>Learning Outcome</h4><p>Reinforced how pricing decisions must be reconciled against cost structure early — not after a product is already committed to production.</p></div>
+      </div>
+    </div>
+
+    <!-- CASE STUDY 4 -->
+    <div class="case-study reveal">
+      <div class="cs-left">
+        <div class="cs-index">CASE 04 / MARKET INTELLIGENCE</div>
+        <div class="cs-title">AI-Powered Nifty 50 Tracker</div>
+        <div class="cs-duration">Oct 2025 — Dec 2025 · Independent Build</div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><div class="val">50</div><div class="lbl">Index Constituents Tracked</div></div>
+          <div class="cs-metric"><div class="val">Live</div><div class="lbl">Market Data Feed</div></div>
+        </div>
+        <div class="cs-tools t-tags">
+          <span class="tag">Financial Markets</span><span class="tag">Dashboard Development</span><span class="tag">Claude</span><span class="tag">Antigravity</span>
+        </div>
+      </div>
+      <div class="cs-right">
+        <div class="cs-block"><h4>Business Problem</h4><p>Traditional stock dashboards show price movement without context. Build something that pairs live index data with AI-generated market insight.</p></div>
+        <div class="cs-block"><h4>Approach</h4><p>Developed a real-time market intelligence platform combining live Nifty 50 data with automated scanning of relevant financial news.</p></div>
+        <div class="cs-block"><h4>Methodology</h4><p>Built an interactive dashboard to monitor index movement, stock-level performance, and percentage change in real time.</p></div>
+        <div class="cs-block"><h4>Key Contributions</h4><ul><li>Automated Top Gainers/Losers tracking and sector heatmaps</li><li>Built correlation analysis and a personalized watchlist feature</li></ul></div>
+        <div class="cs-block full"><h4>Business Impact &amp; Results</h4><p>Produced a functioning market intelligence tool that moves past static price display toward contextualized, AI-assisted market reading.</p></div>
+      </div>
+    </div>
+
+    <div style="margin-top:60px;">
+      <div class="section-head reveal" style="margin-bottom:36px;">
+        <div class="eyebrow"><span class="line"></span> All Projects</div>
+        <h2 style="font-size:1.7rem;">Strategy, operations &amp; brand work</h2>
+      </div>
+      <div class="proj-grid">
+        <div class="proj-card reveal">
+          <div class="cat">Supply Chain</div>
+          <h3>Supply Chain Management Analysis — J.V. Trading Co.</h3>
+          <div class="dur">Feb 2026 — May 2026</div>
+          <p>Field-based analysis of an FMCG wholesaler moving ₹3L+ in monthly sales to 100+ daily customers. Diagnosed inefficiencies using FIFO, Bullwhip Effect, and safety-stock frameworks, then built inventory and logistics dashboards to improve forecasting accuracy and supplier coordination.</p>
+          <div class="t-tags"><span class="tag">Demand Forecasting</span><span class="tag">Root Cause Analysis</span><span class="tag">Dashboards</span></div>
+        </div>
+        <div class="proj-card reveal">
+          <div class="cat">Global Trade</div>
+          <h3>Export Compliance &amp; Global Trade Analysis</h3>
+          <div class="dur">Jan 2025 — Mar 2025</div>
+          <p>End-to-end export feasibility study for handcrafted textile products — HS classification (621490), DGFT/IEC compliance mapping, and tariff and demand analysis via TradeMap to assess international market attractiveness.</p>
+          <div class="t-tags"><span class="tag">HS Classification</span><span class="tag">DGFT &amp; IEC</span><span class="tag">Tariff Evaluation</span></div>
+        </div>
+        <div class="proj-card reveal">
+          <div class="cat">Product &amp; UX Strategy</div>
+          <h3>NexusHR — Human-Centric HR Dashboard</h3>
+          <div class="dur">Nov 2025 — Dec 2025</div>
+          <p>High-fidelity UX/UI prototype simplifying core HR operations — mapped onboarding, attendance, and performance-tracking workflows into a calm, accessible dashboard experience.</p>
+          <div class="t-tags"><span class="tag">Figma</span><span class="tag">Workflow Mapping</span><span class="tag">Prototyping</span></div>
+        </div>
+        <div class="proj-card reveal">
+          <div class="cat">Brand Strategy</div>
+          <h3>Mira — Branding for Unbranded Indian Ceramics</h3>
+          <div class="dur">Jul 2025 — Oct 2025</div>
+          <p>Built brand identity and go-to-market strategy for handcrafted ceramics from Khurja and Bulandshahr, positioned around the Sanskrit word "Mrida." Ran campus and social campaigns that generated 15K+ in sales.</p>
+          <div class="t-tags"><span class="tag">Brand Strategy</span><span class="tag">Consumer Analysis</span><span class="tag">Storytelling</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESEARCH ================= -->
+<section class="section-alt" id="research">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="line"></span> Research</div>
+      <h2>Empirical work</h2>
+      <p>Primary-data research spanning financial inclusion and pharmaceutical science — the same evidence-first discipline, applied to two very different questions.</p>
+    </div>
+
+    <div class="research-card reveal">
+      <div>
+        <h3>Digital Financial Literacy and its Determinants: An Empirical Evidence from Punjab</h3>
+        <div class="inst">Lovely Professional University</div>
+        <div class="dur">Feb 2026 — Mar 2026</div>
+      </div>
+      <div class="research-grid-inner">
+        <div><h5>Objective</h5><p>Examine which demographic factors drive digital financial literacy and fintech adoption among individuals in Punjab.</p></div>
+        <div><h5>Methodology</h5><p>Primary survey of 50 respondents, analyzed using descriptive statistics, correlation, and multiple regression.</p></div>
+        <div><h5>Key Findings</h5><p>Education level and digital payment usage emerged as the strongest predictors of literacy; the model explained 8.3% of observed variation (R² = 0.083).</p></div>
+        <div><h5>Business Relevance</h5><p>Informs how fintech and banking providers might target financial-literacy interventions by demographic segment.</p></div>
+      </div>
+      <div class="t-tags" style="grid-column:1/-1; margin-top:6px;"><span class="tag">Statistical Analysis</span><span class="tag">Regression</span><span class="tag">Financial Inclusion</span></div>
+    </div>
+
+    <div class="research-card reveal">
+      <div>
+        <h3>Alzheimer's Disease: ADRs &amp; Nanoparticle Formulation and Evaluation</h3>
+        <div class="inst">Noida Institute of Engineering &amp; Technology</div>
+        <div class="dur">Jun 2024 — Dec 2024</div>
+      </div>
+      <div class="research-grid-inner">
+        <div><h5>Objective</h5><p>Study adverse drug reactions in conventional Alzheimer's therapies and explore nanoparticle-based delivery alternatives.</p></div>
+        <div><h5>Methodology</h5><p>Prepared and evaluated ibuprofen-loaded liposomal nanoparticles for improved drug-delivery efficiency.</p></div>
+        <div><h5>Key Findings</h5><p>Identified formulation strategies to improve blood-brain barrier penetration while reducing treatment-related side effects.</p></div>
+        <div><h5>Business Relevance</h5><p>Reflects the same structured, hypothesis-driven research process now applied to financial and market questions.</p></div>
+      </div>
+      <div class="t-tags" style="grid-column:1/-1; margin-top:6px;"><span class="tag">Experimental Design</span><span class="tag">Scientific Writing</span><span class="tag">Pharmacovigilance</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="line"></span> Skills</div>
+      <h2>Capabilities</h2>
+      <p>Organized the way a finance or strategy team would evaluate them — technical modeling, process discipline, and the tools behind both.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-cat reveal">
+        <h4>Finance &amp; Investment</h4>
+        <div class="chip-row">
+          <span class="chip">Financial Analysis</span><span class="chip">Financial Modeling</span><span class="chip">Financial Reporting</span>
+          <span class="chip">Project Financing</span><span class="chip">M&amp;A Modeling</span><span class="chip">LBO Modeling</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal">
+        <h4>Operations &amp; Process Excellence</h4>
+        <div class="chip-row">
+          <span class="chip">Lean Six Sigma (DMAIC)</span><span class="chip">Process Optimization</span><span class="chip">Root Cause Analysis</span>
+          <span class="chip">Supply Chain Management</span><span class="chip">Inventory Management</span><span class="chip">Quality Management</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal">
+        <h4>Strategic &amp; Business Skills</h4>
+        <div class="chip-row">
+          <span class="chip">Business Strategy</span><span class="chip">Performance Evaluation</span><span class="chip">Market &amp; Consumer Research</span>
+          <span class="chip">International Trade</span><span class="chip">Pricing Strategy &amp; Target Costing</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal">
+        <h4>Data Analytics &amp; BI</h4>
+        <div class="chip-row">
+          <span class="chip">Data Analysis</span><span class="chip">Statistical Analysis</span><span class="chip">Regression Analysis</span>
+          <span class="chip">Dashboard Development</span><span class="chip">Data Storytelling</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal">
+        <h4>Technology &amp; Tools</h4>
+        <div class="chip-row">
+          <span class="chip">Excel (Advanced)</span><span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">IBM Cognos</span>
+          <span class="chip">Google Analytics</span><span class="chip">Figma</span><span class="chip">AI Tools — Claude, Antigravity</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal">
+        <h4>Professional Skills</h4>
+        <div class="chip-row">
+          <span class="chip">Problem Solving</span><span class="chip">Effective Communication</span><span class="chip">Cross-functional Collaboration</span>
+          <span class="chip">Learning Agility</span><span class="chip">Attention to Detail</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CERTIFICATIONS ================= -->
+<section class="section-alt" id="certifications">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="line"></span> Certifications</div>
+      <h2>Credentials</h2>
+      <p>A deliberate spread across finance regulation, analytics, and process methodology.</p>
+    </div>
+    <div class="cert-grid" id="certGrid">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACHIEVEMENTS ================= -->
+<section id="achievements">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="line"></span> Achievements</div>
+      <h2>Recognition</h2>
+    </div>
+    <div class="ach-grid">
+      <div class="ach-card reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 21h8M12 17v4M7 4h10l-1 8a4 4 0 0 1-8 0L7 4Z"/><path d="M17 5h2a2 2 0 0 1 0 4h-1M7 5H5a2 2 0 0 0 0 4h1"/></svg></div>
+        <p>ISC District Topper with 91% in Intermediate, Rank 50 in UP-CET, and First Division with Distinction in Bachelor of Pharmacy.</p>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <p>Completed undergraduate education under a 100% government-funded scholarship, sustained through consistent academic merit.</p>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V7l8-4 8 4v12M4 19h16M4 19l4-4M20 19l-4-4"/></svg></div>
+        <p>Recognized among the Top 500 Budding Poets in India, with poems published in newspapers.</p>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 2 3 6 6 1-4.5 4.5L17.5 20 12 17l-5.5 3 1-6.5L3 9l6-1 3-6Z"/></svg></div>
+        <p>Multiple accolades across debate, quiz, and presentation competitions at school and college level.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="section-alt" id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="line"></span> Contact</div>
+      <h2>Let's talk finance, strategy, or the next opportunity</h2>
+      <p>Open to conversations around finance, consulting, and business strategy roles — and always glad to connect.</p>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-card reveal">
+        <div class="contact-row">
+          <div class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></div>
+          <div><div class="lbl">Email</div><div class="val"><a href="mailto:vikassinghofficial42@gmail.com">vikassinghofficial42@gmail.com</a></div></div>
+        </div>
+        <div class="contact-row">
+          <div class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.83v2.05h.05c.53-1 1.85-2.05 3.8-2.05 4.07 0 4.82 2.68 4.82 6.16V23h-4v-6.86c0-1.64-.03-3.75-2.29-3.75-2.29 0-2.64 1.79-2.64 3.63V23h-4V8z"/></svg></div>
+          <div><div class="lbl">LinkedIn</div><div class="val"><a href="https://www.linkedin.com/in/vikassinghofficial42/" target="_blank" rel="noopener">/in/vikassinghofficial42</a></div></div>
+        </div>
+        <div class="contact-row">
+          <div class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+          <div><div class="lbl">Linktree</div><div class="val"><a href="https://linktr.ee/vikassinghofficial" target="_blank" rel="noopener">linktr.ee/vikassinghofficial</a></div></div>
+        </div>
+        <div class="contact-row">
+          <div class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="lbl">Location</div><div class="val">Phagwara, Punjab, India</div></div>
+        </div>
+        <div style="margin-top:28px;">
+          <a href="assets/Vikas_Singh_Resume.pdf" download class="btn btn-primary" style="width:100%; justify-content:center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v13m0 0-4-4m4 4 4-4M4 21h16"/></svg>
+            Download Full Resume
+          </a>
+        </div>
+      </div>
+      <div class="contact-photo reveal">
+        <img src="assets/vikas-photo.jpg" alt="Vikas Kumar Singh">
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <p>© <span id="year"></span> Vikas Kumar Singh. Built with intent.</p>
+    <div class="footer-links">
+      <a href="mailto:vikassinghofficial42@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/vikassinghofficial42/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://linktr.ee/vikassinghofficial" target="_blank" rel="noopener">Linktree</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---- Nav scroll state ---- */
+const navEl = document.getElementById('siteNav');
+window.addEventListener('scroll', () => {
+  navEl.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+/* ---- Mobile menu ---- */
+const menuToggle = document.getElementById('menuToggle');
+const mobileNav = document.getElementById('mobileNav');
+menuToggle.addEventListener('click', () => {
+  mobileNav.style.display = mobileNav.style.display === 'none' ? 'block' : 'none';
+});
+mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.style.display = 'none'));
+
+/* ---- Dark mode toggle ---- */
+const themeToggle = document.getElementById('themeToggle');
+const iconSun = document.getElementById('iconSun');
+const iconMoon = document.getElementById('iconMoon');
+function setTheme(dark){
+  document.documentElement.classList.toggle('dark', dark);
+  iconSun.style.display = dark ? 'none' : 'block';
+  iconMoon.style.display = dark ? 'block' : 'none';
+}
+const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+setTheme(prefersDark);
+themeToggle.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+
+/* ---- Typing animation ---- */
+const words = ["Financial Analysis","Corporate Finance","Financial Modelling","Business Strategy","Operations Excellence","Data Analytics"];
+const typeEl = document.getElementById('typeTarget');
+let wi = 0, ci = 0, deleting = false;
+function tick(){
+  const word = words[wi];
+  if(!deleting){
+    ci++;
+    typeEl.textContent = word.slice(0, ci);
+    if(ci === word.length){ deleting = true; setTimeout(tick, 1300); return; }
+  } else {
+    ci--;
+    typeEl.textContent = word.slice(0, ci);
+    if(ci === 0){ deleting = false; wi = (wi+1) % words.length; }
+  }
+  setTimeout(tick, deleting ? 35 : 65);
+}
+tick();
+
+/* ---- Scroll reveal ---- */
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el => io.observe(el));
+
+/* ---- Animated counters ---- */
+const counters = document.querySelectorAll('[data-count]');
+const cio = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const el = e.target;
+      const target = parseFloat(el.getAttribute('data-count'));
+      const isFloat = target % 1 !== 0;
+      let cur = 0;
+      const steps = 40;
+      const inc = target/steps;
+      const iv = setInterval(() => {
+        cur += inc;
+        if(cur >= target){ cur = target; clearInterval(iv); }
+        el.textContent = isFloat ? cur.toFixed(2) : Math.round(cur);
+      }, 30);
+      cio.unobserve(el);
+    }
+  });
+}, { threshold: 0.4 });
+counters.forEach(el => cio.observe(el));
+
+/* ---- Certifications data ---- */
+const certs = [
+  { name:"NISM Series XV: Research Analyst Certification", org:"NISM", date:"Jun 2026", link:null },
+  { name:"Lean Six Sigma Green Belt Certification", org:"KPMG", date:"May 2026", link:"https://drive.google.com/file/d/1I-SU8DNLA6hx8SGSiK4KS58mPtU5RMAG/view?usp=drive_link" },
+  { name:"Applied Financial Modelling Using Excel and AI", org:"Lovely Professional University", date:"Mar 2026", link:"https://drive.google.com/file/d/1axGw9pA-CE-RU5EQHyhioSfN_fGHWcz2/view?usp=drive_link" },
+  { name:"SEBI Investor Certification Examination", org:"SEBI / NISM", date:"Aug 2025", link:"https://drive.google.com/file/d/1R_-OOHMRMNdosG_z27K4bOtrF88Q8MZZ/view?usp=share_link" },
+  { name:"Niryat Bandhu Certification", org:"DGFT", date:"2025", link:null },
+  { name:"Career Essentials in Data Analysis", org:"Microsoft & LinkedIn", date:"Oct 2024", link:"https://www.linkedin.com/learning/certificates/37c390991da2313de0582e9dae8c5cc4ddfb1aec87c2b9fb603dfcab552b084f" },
+  { name:"Career Essentials in Project Management", org:"Microsoft & LinkedIn", date:"Aug 2024", link:"https://www.linkedin.com/learning/certificates/5a9c0b5886a0727753b8907ca82bd5bd3184890c4279fac360844104cb0cc006" },
+  { name:"CS50's Understanding Technology", org:"Harvard University (CS50)", date:"2024", link:"https://cs50.harvard.edu/certificates/d16bf5ac-6bc3-4c72-b24f-87ffecbcf826" },
+  { name:"JPMorgan Chase & Co. — Excel Skills Job Simulation", org:"Forage", date:"2024", link:null },
+  { name:"Tableau A–Z: Hands-On Training for Data Science", org:"Udemy", date:"2024", link:"https://www.udemy.com/certificate/UC-17b227fb-e633-4b63-85e3-0e3bd4a12d06/" },
+  { name:"Leadership Skills", org:"IIM Ahmedabad (Coursera)", date:"2024", link:"https://coursera.org/share/0d07d334ba6f0e12c7c7be8f4794fed2" },
+];
+const certGrid = document.getElementById('certGrid');
+certGrid.innerHTML = certs.map(c => `
+  <div class="cert-card reveal">
+    <div class="cert-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+    <h4>${c.name}</h4>
+    <div class="org">${c.org}</div>
+    <div class="date">${c.date}</div>
+    ${c.link ? `<a class="link" href="${c.link}" target="_blank" rel="noopener">View credential →</a>` : ''}
+  </div>
+`).join('');
+document.querySelectorAll('#certGrid .reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
