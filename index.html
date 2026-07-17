@@ -88,7 +88,37 @@
   }
   html.dark .btn-nav-resume{ background:var(--accent); color:#0B1220; }
   .btn-nav-resume:hover{ transform:translateY(-1px); }
-  .menu-toggle{ display:none; background:none; border:none; color:var(--text); cursor:pointer; }
+  .menu-toggle{
+    display:none; width:40px; height:40px; align-items:center; justify-content:center;
+    background:none; border:1px solid var(--border); border-radius:10px; color:var(--text);
+    cursor:pointer; flex-shrink:0; position:relative; z-index:120;
+  }
+  .menu-toggle svg{ pointer-events:none; }
+  .menu-toggle .icon-close{ display:none; }
+  header.nav.menu-open .menu-toggle .icon-burger{ display:none; }
+  header.nav.menu-open .menu-toggle .icon-close{ display:block; }
+
+  #mobileNav{
+    display:none; position:relative; z-index:110;
+    background:var(--bg); border-top:1px solid var(--border);
+    max-height:calc(100vh - 68px); overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  header.nav.menu-open #mobileNav{ display:block; }
+  #mobileNav ul{ list-style:none; display:flex; flex-direction:column; margin:0; padding:10px 24px 26px; gap:2px; }
+  #mobileNav ul li a{
+    display:block; padding:14px 6px; font-size:1rem; font-weight:600; color:var(--text);
+    border-bottom:1px solid var(--border);
+  }
+  #mobileNav ul li a::after{ display:none; }
+  #mobileNav ul li:last-child a{ border-bottom:none; }
+  #mobileNav ul li a:active{ color:var(--accent); }
+  body.nav-locked{ overflow:hidden; }
+  .nav-backdrop{
+    display:none; position:fixed; inset:0; z-index:90;
+    background:rgba(15,23,42,.35); backdrop-filter:blur(2px);
+  }
+  header.nav.menu-open + .nav-backdrop{ display:block; }
 
   /* ---------- HERO ---------- */
   .hero{ padding:190px 0 110px; position:relative; overflow:hidden; }
@@ -387,18 +417,19 @@
       </ul>
     </nav>
     <div class="nav-actions">
-      <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">
+      <button type="button" class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">
         <svg id="iconSun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8l1.8-1.8M18 6l1.8-1.8"/></svg>
         <svg id="iconMoon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
       </button>
       <a href="assets/Vikas_Singh_Resume.pdf" download class="btn-nav-resume">Resume</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <svg class="icon-burger" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg class="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
   </div>
-  <nav id="mobileNav" style="display:none; border-top:1px solid var(--border);">
-    <ul style="flex-direction:column; padding:18px 28px; gap:16px;">
+  <nav id="mobileNav" aria-label="Mobile">
+    <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#experience">Experience</a></li>
@@ -411,6 +442,7 @@
     </ul>
   </nav>
 </header>
+<div class="nav-backdrop" id="navBackdrop"></div>
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="home">
@@ -918,12 +950,30 @@ window.addEventListener('scroll', () => {
 });
 
 /* ---- Mobile menu ---- */
+const siteNav = document.getElementById('siteNav');
 const menuToggle = document.getElementById('menuToggle');
 const mobileNav = document.getElementById('mobileNav');
+const navBackdrop = document.getElementById('navBackdrop');
+
+function openMenu(){
+  siteNav.classList.add('menu-open');
+  menuToggle.setAttribute('aria-expanded', 'true');
+  menuToggle.setAttribute('aria-label', 'Close menu');
+  document.body.classList.add('nav-locked');
+}
+function closeMenu(){
+  siteNav.classList.remove('menu-open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.setAttribute('aria-label', 'Open menu');
+  document.body.classList.remove('nav-locked');
+}
 menuToggle.addEventListener('click', () => {
-  mobileNav.style.display = mobileNav.style.display === 'none' ? 'block' : 'none';
+  siteNav.classList.contains('menu-open') ? closeMenu() : openMenu();
 });
-mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.style.display = 'none'));
+navBackdrop.addEventListener('click', closeMenu);
+mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeMenu(); });
+window.addEventListener('resize', () => { if(window.innerWidth > 1024) closeMenu(); });
 
 /* ---- Dark mode toggle ---- */
 const themeToggle = document.getElementById('themeToggle');
